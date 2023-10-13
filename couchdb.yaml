@@ -1,19 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: couchdb
+  name: couchdb-svc
   namespace: default
-  annotations:
-      metallb.universe.tf/loadBalancerIPs: 51.77.213.65
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     name: couchdb
   ports:
     - name: "5984"
       port: 5984
       targetPort: 5984
-  externalTrafficPolicy: Local
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -21,11 +18,12 @@ metadata:
   name: couchdb-pvc
   namespace: default
 spec:
+  storageClassName: openebs-jiva-csi-default
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 500Mi
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -35,13 +33,13 @@ metadata:
 data:
   docker.ini: |
     [couchdb]
-    single_node=true
+    single_node = true
     max_document_size = 50000000
+    uuid = 1f090445d8acf2df2893959fd582767c
 
     [chttpd]
     require_valid_user = true
     max_http_request_size = 4294967296
-    enable_cors = true
 
     [chttpd_auth]
     require_valid_user = true
@@ -50,9 +48,10 @@ data:
     [httpd]
     WWW-Authenticate = Basic realm="couchdb"
     bind_address = 0.0.0.0
+    enable_cors = true
 
     [cors]
-    origins = app://obsidian.md, capacitor://localhost, http://localhost
+    origins = app://obsidian.md,capacitor://localhost,http://localhost
     credentials = true
     headers = accept, authorization, content-type, origin, referer
     methods = GET,PUT,POST,HEAD,DELETE
