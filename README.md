@@ -4,7 +4,7 @@ Cloud infrastructure for my open-source &amp; self-hosted apps. Deployed for pen
 
 ## The Servers
 
-- _Specs:_ 1vCPU, 2GB RAM, 20GB SSD, 2GB Swap Memory
+- _Specs:_ 1vCPU, 2GB RAM, 20GB SSD, 2GB Swap Memory, Ubuntu 23.04
 - _Number of VPS:_ 10
 - _Locations:_ Germany (4), France (3), Poland (3)
 - _Provider:_ [OVH Cloud](https://www.ovhcloud.com/en/)
