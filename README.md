@@ -5,7 +5,7 @@
 
 Cloud infrastructure for my open-source &amp; self-hosted apps. Deployed for pennies on a HA Kubernetes cluster on [OVH Cloud](https://www.ovhcloud.com/en/) 🚀.
 
-## The Servers
+## Servers
 
 - _Specs:_ 1vCPU, 2GB RAM, 20GB SSD, 2GB Swap Memory, Ubuntu 23.04
 - _Number of VPS:_ 10
@@ -23,7 +23,7 @@ The storage solution used is [OpenEBS](https://microk8s.io/docs/addon-openebs). 
 ### Ingress
 
 - _Tool_: Nginx
-- _Host_: infra.stephenmwangi.com
+- _Host_: cauldron.stephenmwangi.com
 - _Certificate Issuer_: [Let's Encrypt](https://letsencrypt.org/)
 - _DNS_: 4 A records pointing to hosts in different regions for redundancy
 
