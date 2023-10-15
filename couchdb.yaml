@@ -63,10 +63,14 @@ metadata:
   name: couchdb
   namespace: default
 spec:
-  replicas: 1
   selector:
     matchLabels:
       name: couchdb
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -76,6 +80,7 @@ spec:
       containers:
         - name: couchdb
           image: couchdb:3.3.2
+          imagePullPolicy: IfNotPresent
           env:
             - name: COUCHDB_USER
               valueFrom:
