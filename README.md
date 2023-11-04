@@ -18,7 +18,7 @@ Cloud infrastructure for my open-source &amp; self-hosted apps. Deployed for pen
 Deployed using [Microk8s](https://microk8s.io/). \
 The cluster is highly available out of the box since MicroK8s automatically enables [high availability](https://microk8s.io/docs/high-availability) for clusters with three or more nodes.
 
-The storage solution used is [OpenEBS](https://microk8s.io/docs/addon-openebs). The volumes are [replicated](https://openebs.io/docs#what-does-openebs-do) thrice for redundancy.
+The storage solution used is [Longhorn](https://longhorn.io/).
 
 ### Ingress
 
