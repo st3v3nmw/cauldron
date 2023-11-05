@@ -21,14 +21,14 @@ metadata:
   namespace: default
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   tls:
     - hosts:
         - cauldron.stephenmwangi.com
+        - couchdb.stephenmwangi.com
       secretName: infra-svc-ingress-tls
   rules:
-    - host: cauldron.stephenmwangi.com
+    - host: couchdb.stephenmwangi.com
       http:
         paths:
           - backend:
@@ -36,5 +36,5 @@ spec:
                 name: couchdb-svc
                 port:
                   number: 5984
-            path: /couchdb(/|$)(.*)
+            path: /
             pathType: Prefix
