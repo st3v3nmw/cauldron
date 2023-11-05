@@ -26,6 +26,7 @@ spec:
     - hosts:
         - cauldron.stephenmwangi.com
         - couchdb.stephenmwangi.com
+        - suspish.link
       secretName: infra-svc-ingress-tls
   rules:
     - host: couchdb.stephenmwangi.com
