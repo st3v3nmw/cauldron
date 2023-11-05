@@ -20,7 +20,7 @@ metadata:
 spec:
   storageClassName: longhorn
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 500Mi
@@ -67,10 +67,6 @@ spec:
     matchLabels:
       name: couchdb
   replicas: 1
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -114,8 +110,6 @@ spec:
             - name: couchdb-config
               mountPath: /config/
       restartPolicy: Always
-      securityContext:
-        fsGroup: 2000
       volumes:
         - name: couchdb-pvc
           persistentVolumeClaim:

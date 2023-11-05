@@ -33,6 +33,10 @@ The storage solution used is [Longhorn](https://longhorn.io/).
 
 Used to sync Obsidian notes across my devices using the [Obsidian LiveSync plugin](https://github.com/vrtmrz/obsidian-livesync/blob/main/docs/setup_own_server.md).
 
+#### Postgres
+
+The world's most advanced open source relational [database](https://www.postgresql.org/).
+
 ### Credits
 
 #### Logo
