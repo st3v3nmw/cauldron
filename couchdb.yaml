@@ -90,7 +90,6 @@ spec:
                   key: COUCHDB_PASSWORD
           ports:
             - containerPort: 5984
-              hostPort: 5984
               protocol: TCP
           volumeMounts:
             - name: couchdb-pvc
