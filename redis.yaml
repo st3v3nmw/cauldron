@@ -51,7 +51,6 @@ spec:
             - "1"
           ports:
             - containerPort: 6379
-              hostPort: 6379
               protocol: TCP
           volumeMounts:
             - name: redis-pvc
