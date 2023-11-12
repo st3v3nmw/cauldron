@@ -39,3 +39,13 @@ spec:
                   number: 5984
             path: /
             pathType: Prefix
+    - host: suspish.link
+      http:
+        paths:
+          - backend:
+              service:
+                name: suspish-svc
+                port:
+                  number: 8080
+            path: /
+            pathType: Prefix

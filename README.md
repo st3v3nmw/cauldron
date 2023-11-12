@@ -25,7 +25,7 @@ The storage solution used is [Longhorn](https://longhorn.io/).
 - _Tool_: Nginx
 - _Root host_: cauldron.stephenmwangi.com
 - _Certificate Issuer_: [Let's Encrypt](https://letsencrypt.org/)
-- _DNS_: 4 A records pointing to hosts in different regions for redundancy, CNAMEs for the different services
+- _DNS_: 4 A records pointing to hosts in different regions for redundancy & CNAMEs for the different services
 
 ### Hosted Apps
 
@@ -40,6 +40,10 @@ The world's most advanced open source relational [database](https://www.postgres
 #### Redis
 
 The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker.
+
+#### [Suspish.link](https://github.com/st3v3nmw/suspish.link)
+
+Why shorten URLs when you can make them longer and suspicious? 👀
 
 ### Credits
 
