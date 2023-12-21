@@ -3,20 +3,21 @@
     <h1>Cauldron</h1>
 </div>
 
-Cloud infrastructure for my open-source &amp; self-hosted apps. Deployed for pennies on a HA Kubernetes cluster on [OVH Cloud](https://www.ovhcloud.com/en/) 🚀.
+Kubernetes infrastructure for my open-source &amp; self-hosted apps 🚀.
 
-## Servers
+## Nodes
 
-- _Specs:_ 1vCPU, 2GB RAM, 20GB SSD, 2GB Swap Memory, Ubuntu 23.04
-- _Number of VPS:_ 10
-- _Locations:_ Germany (4), France (3), Poland (3)
-- _Provider:_ [OVH Cloud](https://www.ovhcloud.com/en/)
-- _Cost:_ 10 * $0.98 per month (1 year offer!)
+| Host  | CPU               | RAM             | Operating System    | Role         | Description                                    |
+| ----- | ----------------- | --------------- | ------------------- | ------------ | ---------------------------------------------- |
+| mars  | 3 @ 2.8GHz (vCPU) | 4GB + 4GB Swap  | Ubuntu Server 22.04 | Control Pane | VPS from [Alwyzon](https://www.alwyzon.com/en) |
+| luna  | 4 @ 2.00GHz       | 8GB + 8GB Swap  | Ubuntu Server 22.04 | Worker       | Old laptop                                     |
+| terra | 8 @ 1.90GHz       | 16GB + 8GB Swap | Ubuntu 23.10        | Worker       | Current laptop                                 |
 
 ## Kubernetes Cluster
 
-Deployed using [Microk8s](https://microk8s.io/). \
-The cluster is highly available out of the box since MicroK8s automatically enables [high availability](https://microk8s.io/docs/high-availability) for clusters with three or more nodes.
+Deployed using [Microk8s](https://microk8s.io/).
+
+The nodes are connected together using [Tailscale](https://blog.jaredallard.me/microk8s-and-tailscale/).
 
 The storage solution used is [Longhorn](https://longhorn.io/).
 
@@ -25,25 +26,16 @@ The storage solution used is [Longhorn](https://longhorn.io/).
 - _Tool_: Nginx
 - _Root host_: cauldron.stephenmwangi.com
 - _Certificate Issuer_: [Let's Encrypt](https://letsencrypt.org/)
-- _DNS_: 4 A records pointing to hosts in different regions for redundancy & CNAMEs for the different services
 
 ### Hosted Apps
 
-#### CouchDB
+#### [Postgres](https://www.postgresql.org/)
 
-Used to sync Obsidian notes across my devices using the [Obsidian LiveSync plugin](https://github.com/vrtmrz/obsidian-livesync/blob/main/docs/setup_own_server.md).
+The world's most advanced open source relational database.
 
-#### Postgres
-
-The world's most advanced open source relational [database](https://www.postgresql.org/).
-
-#### Redis
+#### [Redis](https://redis.io/)
 
 The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker.
-
-#### [Suspish.link](https://github.com/st3v3nmw/suspish.link)
-
-Why shorten URLs when you can make them longer and suspicious? 👀
 
 ### Credits
 
