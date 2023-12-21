@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres-svc
-  namespace: default
+  namespace: postgres
 spec:
   type: ClusterIP
   selector:
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
-  namespace: default
+  namespace: postgres
 spec:
   storageClassName: longhorn
   accessModes:
@@ -29,21 +29,30 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres
-  namespace: default
+  namespace: postgres
 spec:
   selector:
     matchLabels:
       name: postgres
   replicas: 1
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - mars
   template:
     metadata:
       labels:
         name: postgres
-        namespace: default
+        namespace: postgres
     spec:
       containers:
         - name: postgres
-          image: postgres:16.0
+          image: postgres:16.1
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_PASSWORD

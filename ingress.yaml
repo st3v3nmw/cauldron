@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: lets-encrypt
-  namespace: default
+  namespace: ingress
 spec:
   acme:
     email: mail@stephenmwangi.com
@@ -18,34 +18,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cauldron
-  namespace: default
+  namespace: ingress
   annotations:
     cert-manager.io/cluster-issuer: lets-encrypt
 spec:
   tls:
     - hosts:
         - cauldron.stephenmwangi.com
-        - couchdb.stephenmwangi.com
-        - suspish.link
       secretName: infra-svc-ingress-tls
-  rules:
-    - host: couchdb.stephenmwangi.com
-      http:
-        paths:
-          - backend:
-              service:
-                name: couchdb-svc
-                port:
-                  number: 5984
-            path: /
-            pathType: Prefix
-    - host: suspish.link
-      http:
-        paths:
-          - backend:
-              service:
-                name: suspish-svc
-                port:
-                  number: 8080
-            path: /
-            pathType: Prefix
+  rules: []
