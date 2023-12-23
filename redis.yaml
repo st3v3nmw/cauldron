@@ -35,15 +35,6 @@ spec:
     matchLabels:
       name: redis
   replicas: 1
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - mars
   template:
     metadata:
       labels:
@@ -69,3 +60,12 @@ spec:
         - name: redis-pvc
           persistentVolumeClaim:
             claimName: redis-pvc
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - mars

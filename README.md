@@ -11,7 +11,6 @@ Kubernetes infrastructure for my open-source &amp; self-hosted apps 🚀.
 | ----- | ----------------- | --------------- | ------------------- | ------------ | ---------------------------------------------- |
 | mars  | 3 @ 2.8GHz (vCPU) | 4GB + 4GB Swap  | Ubuntu Server 22.04 | Control Pane | VPS from [Alwyzon](https://www.alwyzon.com/en) |
 | luna  | 4 @ 2.00GHz       | 8GB + 8GB Swap  | Ubuntu Server 22.04 | Worker       | Old laptop                                     |
-| terra | 8 @ 1.90GHz       | 16GB + 8GB Swap | Ubuntu 23.10        | Worker       | Current laptop                                 |
 
 ## Kubernetes Cluster
 
