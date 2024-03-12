@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:7.2.3
+          image: redis:7.2.4
           imagePullPolicy: IfNotPresent
           args:
             - "--save"
