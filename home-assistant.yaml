@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: home-assistant
+  labels:
+    name: home-assistant
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant-ingress
+  namespace: home-assistant
+  annotations:
+    cert-manager.io/cluster-issuer: lets-encrypt
+spec:
+  tls:
+    - hosts:
+        - bagend.stephenmwangi.com
+      secretName: lets-encrypt-private-key
+  rules:
+    - host: bagend.stephenmwangi.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: home-assistant-svc
+                port:
+                  number: 8123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-svc
+  namespace: home-assistant
+spec:
+  type: ClusterIP
+  ports:
+    - name: "8123"
+      port: 8123
+      targetPort: 8123
+  clusterIP: None
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: home-assistant-svc
+  namespace: home-assistant
+subsets:
+  - addresses:
+      - ip: 100.101.69.54
+    ports:
+      - name: "8123"
+        port: 8123
+        protocol: TCP
